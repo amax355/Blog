@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+<title>{% block head %}{{ instance.title }}| My Blog{% endblock %}</title>
+
+{% block content %}
+
+
+    <div class="col-sm-6 col-sm-offset-3">
+    {% if instance.image %}
+    <img src="{{ instance.image.url }}" class="img-responsive"/>
+        {% endif %}
+        <h1>{{ title }}<small> {{ instance.timestamp }}</small></h1>
+            {% if instance.user.get_full_name %}
+            <p>Author:{{ instance.user.get_full_name  }}</p>
+            {% endif %}
+            {{ instance.content|linebreaks }}<br/>
+
+{% endblock %}
